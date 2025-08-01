@@ -1,0 +1,925 @@
+@font-face {
+  font-family: 'Raleway';
+  src: url('./fonts/Raleway-Bold.woff2') format('woff2');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('./fonts/Raleway-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  dl
+):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
+  scrollbar-gutter: stable;
+}
+
+/**
+  Плавный скролл
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут fill со значением 'none' или начинается с 'url')
+ */
+:where([fill]:not(
+  [fill="none"],
+  [fill^="url"]
+)) {
+  fill: currentColor;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут stroke со значением 'none')
+ */
+:where([stroke]:not(
+  [stroke="none"],
+  [stroke^="url"]
+)) {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Приведение рамок таблиц в классический 'collapse' вид
+ */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+:root {
+    --font-famaly-base: 'Raleway';
+
+    --color-dark: #2C2D35;
+    --color-dark-green: #376B44;
+    --color-green: #598D66;
+    --color-light-green: #D4E8D9;
+    --color-light: #E1EDE6;
+    --color-gray: #86928B;
+    --color-yellow: #FAEB97;
+
+    --transition-duration: 0.2s;
+
+    --header-height: 100px;
+
+    --button-width: 310px;
+    --button-height: 65px;
+
+    --container-width: 1110px;
+
+    --card-width: 350px;
+    --card-height: 730px;
+
+    --border: 1px solid #598D66;
+}
+
+body {
+  font-family: var(--font-famaly-base);
+  font-size: 20px;
+  color: var(--color-dark);
+  background-color: #fff;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+h3 {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.header {
+  display: flex;
+  column-gap: 34.38vw;
+  justify-content: center;
+  align-items: center;
+  height: var(--header-height);
+  background-color: var(--color-light-green);
+}
+
+.logo {
+  font-family: var(--font-famaly-base);
+  color: var(--color-green);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.header__menu-list {
+  display: flex;
+  align-items: center;
+  column-gap: 60px;
+}
+
+.header__menu-link {
+  color: var(--color-dark);
+}
+
+.header__menu-link:hover {
+  color: var(--color-green);
+}
+
+.shopping-cart:hover {
+  filter: drop-shadow(1px 3px 2px var(--color-green));
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+  margin-bottom: 70px;
+}
+
+.banner__img,
+.banner__body  {
+  width: clamp(250px, 37.5vw, 540px);
+  height: auto;
+}
+
+.banner__title {
+  font-size: clamp(36px, 4.17vw, 60px);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.ink__title {
+  color: var(--color-green);
+}
+
+.banner__info {
+  color: var(--color-gray);
+  font-size: 18px;
+}
+
+.button {
+  color: var(--color-green);
+  font-size: 20px;
+  background: transparent;
+  height: var(--button-height);
+  border: var(--border);
+  width: var(--button-width);
+}
+
+.banner__button {
+  width: 227px;
+}
+
+.banner__button:hover {
+  color: var(--color-dark);
+  background-color: var(--color-yellow);
+}
+
+.reprodaction__catalog-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 29.03vw;
+}
+
+.reprodaction__catalog-title {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.reprodaction__navigation-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 32px;
+}
+
+.reprodaction__navigation-link {
+  color: var(--color-dark);
+  font-size: 20px;
+  background-color: var(--color-light-green);
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.reprodaction__navigation-link:hover {
+  color: var(--color-light);
+  background-color: var(--color-green);
+}
+
+.reprodaction__navigation-link.is-current {
+  color: var(--color-light);
+  background-color: var(--color-dark-green);
+}
+
+.reproduction__catalog {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 350px);
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.reprodaction__card {
+  width: 350px;
+  height: 730px;
+  background-color: var(--color-light-green);
+  padding: 20px;
+  position: relative;
+}
+
+.reprodaction__image {
+  margin-bottom: 20px;
+}
+
+.reprodaction__autor {
+  font-size: 18px;
+  color: var(--color-gray);
+}
+
+.reprodaction__name {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.reprodaction__type-size {
+  font-size: 18px;
+}
+
+.reprodaction__price {
+  display: flex;
+  font-size: 24px;
+  color: var(--color-green);
+  position: absolute;
+  bottom: 100px;
+}
+
+.reprodaction__button {
+  position: absolute;
+  bottom: 20px;
+}
+
+.reprodaction__button:hover {
+  background-color: var(--color-green);
+  color: var(--color-light);
+}
+
+.news {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  color: #fff;
+  font-size: 18px; 
+  margin-top: 70px;
+  padding-block: 70px;
+  padding-inline: clamp(33px, 11.45vw, 165px);
+  position: relative;
+  width: 100%;
+  height: 575px;
+  background-image: 
+    url('./img/news_bg-3.png'),
+    url('./img/news_bg-2.png'),
+    url('./img/news_background.jpg');
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.news__content-body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 520px;
+}
+
+.news__title {
+  display: flex;
+  column-gap: 20px;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.news__button {
+  position: absolute;
+  bottom: 70px;
+  width: 260px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-dark);
+  background-color: #EEDB6D;
+}
+
+.news__button:hover {
+  background-color: #D9B949;
+}
+
+.our__team{
+  display: flex;
+  column-gap: 30px;
+  justify-content: center;
+  align-items: center;
+  margin-block: 70px;
+}
+
+.hend {
+  width: 445px;
+}
+
+.team__content-box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 635px;
+}
+
+.team__title {
+  line-height: 1;
+}
+
+.team__content {
+  font-size: 18px;
+}
+
+.team__worker {
+  display: flex;
+  column-gap: 30px;
+}
+
+footer {
+  background-color: var(--color-light-green);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 170px;
+  column-gap: 60px;
+  padding-block: 25px;
+  margin-inline: 30px;
+  position: relative;
+}
+
+.lower-box,
+[class*="lower-list"],
+.copyright {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
+.footer__logo-box {
+  width: 145px;
+}
+
+.footer__contact {
+  width: 170px;
+}
+
+.box-1 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+}
+
+.box-2 {
+  display: flex;
+  column-gap: 60px;
+}
+
+.media__lower-box {
+  width: 132px;
+}
+
+.social__icons {
+  display: flex;
+  column-gap: 30px;
+  margin-bottom: 4px;
+}
+
+.lower__title_nav {
+  font-size: 20px;
+  color: var(--color-dark);
+}
+
+.lover-list-element-link {
+  font-size: 18px;
+  color: var(--color-gray);
+}
+
+.lover-list-element-link:hover {
+  color: var(--color-dark-green);
+}
+
+small {
+  font-size: 12px;
+  color: var(--color-gray);
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1170px) {
+
+  .reprodaction__catalog-header {
+    column-gap: 63px;
+  }
+
+  .reproduction__catalog {
+    grid-template-columns: repeat(2, 330px);
+  }
+
+  .reprodaction__card {
+    width: 330px;
+    height: 730px;
+  }
+
+  .reprodaction__button {
+    width: 290px;
+  }
+
+}
+
+@media (max-width: 1024px) {
+  .header {
+    column-gap: 100px;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    height: 250px;
+  }
+
+  .footer:not(:last-child) {
+    row-gap: 30px;
+  }
+
+  .box-1 {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+
+  .box-2 {
+    padding-bottom: 16px;
+  }
+
+  .media__lower-box {
+    padding-top: 16px;
+    align-items: center;
+  }
+
+  
+ 
+}
+
+
+@media (max-width: 870px) {
+
+  .header__menu-list {
+    column-gap: 50px;
+  }
+
+  .reprodaction__catalog-header {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 33px;
+  }
+
+  .reprodaction__card {
+  width: 330px;
+  }
+
+  .our__team {
+    flex-direction: column;
+    row-gap: 30px;
+    align-items: flex-start;
+    margin-inline: 40px;
+  }
+
+}
+
+
+@media (max-width: 724px) {
+  .header {
+    height: 120px;
+    flex-direction: column;
+  }
+  
+  .header__logo,
+  .header__menu {
+    line-height: 60px;
+  }
+
+  .header__menu {
+    border-top: 1px solid var(--color-gray);
+  }
+
+  .banner__button {
+    width: 210px;
+    height: 60px;
+  }
+
+  .reprodaction__navigation-link {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+
+  .reproduction__catalog {
+    grid-template-columns: repeat(2, 240px);
+  }
+
+  .reprodaction__card {
+    width: 240px;
+    height: 514px;
+  }
+
+  .reprodaction__image {
+    width: 200px;
+    height: 250px;
+  }
+
+  .reprodaction__autor,
+  .reprodaction__type-size {
+    font-size: 16px;
+  }
+
+  .reprodaction__name {
+    font-size: 24px;
+  }
+
+  .reprodaction__price {
+    font-size: 20px;
+    position: absolute;
+    bottom: 80px;
+  }
+
+  .reprodaction__button {
+    width: 200px;
+    height: 50px;
+  }
+
+  .news {
+    height: 440px;
+    background-position: right;
+    padding-inline: 35px;
+    padding-block: 50px;
+  }
+
+  .news__content-body {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .news__title {
+    font-size: 24px;
+  }
+
+  .news__title-image {
+    width: 48px;
+    aspect-ratio: 1;
+  }
+
+  .news__button {
+    width: 290px;
+    height: 50px;
+    position: absolute;
+    bottom: 30px;
+  }
+
+  .hend,
+  .team__content-box {
+    width: clamp(290px, 90vw, 690px);
+  }
+
+  .footer {
+    height: 320px;
+  }
+
+  .box-2 {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .media__lower-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: var(--border);
+  }
+
+  .copyright {
+    width: 190px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}
+
+
+
+@media (max-width: 528px) {
+
+   .header {
+    height: 130px;
+    flex-direction: column;
+  }
+
+  .header__logo {
+    line-height: 65px;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header__menu {
+    border: none;
+    line-height: 65px;
+  }
+
+  .banner__img {
+    display: none;
+  }
+
+  .banner__body {
+    width: 100%;
+    margin-inline: 20px;
+    margin-top: 60px;
+  }
+
+  .banner__button {
+    width: 180px;
+    height: 50px;
+    margin-top: 40px;
+  }
+
+    .reproduction__catalog {
+    grid-template-columns: repeat(1, 290px);
+  }
+
+  .reprodaction__card {
+    width: 290px;
+    height: 514px;
+  }
+
+  .reprodaction__image {
+    width: 250px;
+    height: 250px;
+  }
+
+  .reprodaction__button {
+    width: 250px;
+  }
+
+  .news {
+    height: 550px;
+  }
+
+  .news__button {
+    position: relative;
+    left: 5%;
+    bottom: -10px;
+  }
+
+  .footer {
+    height: 395px;
+    padding-top: 15px;
+  }
+
+  .box-1,
+  .box-2 {
+    flex-direction: column;
+    row-gap: 3px;
+  }
+
+  .box-1 {
+    row-gap: 20px;
+  }
+
+  .phone-number,
+  .lower__title_nav {
+    font-size: 18px;
+  }
+
+  .reprodaction__lower-box {
+    position: absolute;
+    right: 5px;
+    bottom: 240px;
+  }
+
+  .infirmation__lower-box {
+    position: absolute;
+    right: 15px;
+    bottom: 120px;
+  }
+
+  .news__lower-box {
+    position: absolute;
+    bottom: 120px;
+  }
+
+  .media__lower-box {
+    position: absolute;
+    bottom: 20px;
+  }
+
+  .copyright {
+    width: 180px;
+  }
+
+}

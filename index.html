@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ink House</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo header__logo">
+            <img src="./icons/logo.svg" alt="logo" class="logo__image" width="35" height="35">
+            Ink. House
+        </a>
+        <nav class="header__menu">
+
+            <ul class="header__menu-list">
+                <li class="header__menu-item">
+                    <a href="#" class="header__menu-link">Репродукции</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#" class="header__menu-link">Новинки</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#" class="header__menu-link">О нас</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#" class="header__menu-link cart">
+                        <img class="shopping-cart" src="./icons/shopping-cart.svg" alt="shopping-cart" width="24" height="24">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+    </header>
+    <main class="content">
+        <h1 class="visually-hidden">Магазин реплик картин</h1>
+        <section class="banner">
+            <h2 class="visually-hidden">Реплики картин</h2>
+            <img class="banner__img" src="./img/baner.jpg" alt="A bird is sitting on a branch" width="540" height="620">
+            <div class="banner__body">
+                <h3 class="banner__title">Реплики картин от <span class="ink__title"> Ink. House</span></h3>
+                <p class="banner__info">Высокое качество отрисовки на плотной бумаге или льняном холсте. Редкие произведения, доступные цены.</p>
+                <button class="button banner__button" type="button">Продукция</button>
+            </div>
+        </section>
+
+        <section class="reproduction__catalog-navigation">
+            <header class="reprodaction__catalog-header">
+                <h2 class="reprodaction__catalog-title">Репродукции</h2>
+            <nav class="reprodaction__catalog-navigation">
+                <ul class="reprodaction__navigation-list">
+                    <li class="reprodaction__navigation-item"><a href="#" class="reprodaction__navigation-link  is-current">Франция</a></li>
+                    <li class="reprodaction__navigation-item"><a href="#" class="reprodaction__navigation-link">Германия</a></li>
+                    <li class="reprodaction__navigation-item"><a href="#" class="reprodaction__navigation-link">Англия</a></li>
+                </ul>
+            </nav>
+            </header>
+            <section class="reproduction__catalog">
+                <h3 class="visually-hidden">Каталог товаров</h3>
+                <div class="reprodaction__card"> 
+                    <img src="./img/1.jpg" alt="Охота Амура" class="reprodaction__image" width="310" height="422">
+                    <span class="reprodaction__autor">Марсель Руссо</span>
+                    <h4 class="reprodaction__name">Охота Амура</h4>
+                    <p class="reprodaction__type-size">Холст, масло (50х80) </p>
+                    <span class="reprodaction__price">14 500 руб</span>
+                    <button class="reprodaction__button button">В корзину</button>
+                </div>
+
+                <div class="reprodaction__card">
+                    <img src="./img/2.jpg" alt="Дама с собачкой" class="reprodaction__image" width="310" height="422">
+                    <span class="reprodaction__autor">Анри Селин</span>
+                    <h4 class="reprodaction__name">Дама с собачкой</h4>
+                    <p class="reprodaction__type-size">Акрил, бумага (50х80) </p>
+                    <span class="reprodaction__price">16 500 руб</span>
+                    <button class="reprodaction__button button">В корзину</button>
+                </div>
+
+                <div class="reprodaction__card">
+                    <img src="./img/3.jpg" alt="Процедура" class="reprodaction__image" width="310" height="422">
+                    <span class="reprodaction__autor">Франсуа Дюпон</span>
+                    <h4 class="reprodaction__name">Процедура</h4>
+                    <p class="reprodaction__type-size">Цветная литография (40х60) </p>
+                    <span class="reprodaction__price">20 000 руб</span>
+                    <button class="reprodaction__button button">В корзину</button>
+                </div>
+
+                <div class="reprodaction__card">
+                    <img src="./img/4.jpg" alt="Дама сидит на лавочке с розой во рту" class="reprodaction__image" width="310" height="422">
+                    <span class="reprodaction__autor">Луи Детуш</span>
+                    <h4 class="reprodaction__name">Роза</h4>
+                    <p class="reprodaction__type-size">Бумага, акрил (50х80)</p>
+                    <span class="reprodaction__price">12 000 руб</span>
+                    <button class="reprodaction__button button">В корзину</button>
+                </div>
+
+                <div class="reprodaction__card">
+                    <img src="./img/5.jpg" alt="Птичья трапеза" class="reprodaction__image" width="310" height="422">
+                    <span class="reprodaction__autor">Франсуа Дюпон</span>
+                    <h4 class="reprodaction__name">Птичья трапеза</h4>
+                    <p class="reprodaction__type-size">Цветная литография (40х60)</p>
+                    <span class="reprodaction__price">22 500 руб</span>
+                    <button class="reprodaction__button button">В корзину</button>
+                </div>
+
+                <div class="reprodaction__card">
+                    <img src="./img/6.jpg" alt="Пейзаж с рыбой" class="reprodaction__image" width="310" height="422">
+                    <span class="reprodaction__autor">Пьер Моранж</span>
+                    <h4 class="reprodaction__name">Пейзаж с рыбой</h4>
+                    <p class="reprodaction__type-size">Цветная литография (40х60)</p>
+                    <span class="reprodaction__price">20 000 руб</span>
+                    <button class="reprodaction__button button">В корзину</button>
+                </div>
+            </section>
+            
+        </section>
+
+        <section class="news">
+            <h2 class="visually-hidden">Новостной блок</h2>
+            <div class="news__content-body">
+                <h3 class="news__title">
+                    <img src="./icons/star.svg" alt="star" class="news__title-image" width="80" height="80">
+                    Новая коллекция французских авторов</h3>
+                <p class="news__content">Сложно сказать, почему акционеры крупнейших компаний призывают нас к новым свершениям, которые, в свою очередь, должны быть заблокированы в рамках своих собственных рациональных ограничений. </p>
+                <p class="news__content">Принимая во внимание показатели успешности, граница обучения кадров предопределяет высокую востребованность направлений прогрессивного развития.</p>
+            </div>
+            <a href="#" class="news__button button">Ознакомиться</a>
+            </section>
+
+        <section class="our__team">
+            <h2 class="visually-hidden">Our team</h2>
+            <img src="./img/ruka.png" alt="ruka" class="hend" width="445" height="400">
+            <div class="team__content-box">
+                <h3 class="team__title">Наша команда</h3>
+                <p class="team__content">Значимость этих проблем настолько очевидна, что базовый вектор развития позволяет оценить значение экспериментов, поражающих по своей масштабности и грандиозности. Мы вынуждены отталкиваться от того, что консультация с широким активом.</p>
+                <div class="team__worker">
+                    <img src="./img/worker1.png" alt="" class="worker__photo" width="80" height="80">
+                    <img src="./img/worker2.png" alt="" class="worker__photo" width="80" height="80">
+                    <img src="./img/worker3.png" alt="" class="worker__photo" width="80" height="80">
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <section class="footer">
+                <h2 class="visually-hidden">Нижняя навигация</h2>
+
+                <div class="box-1">
+                    <div class="footer__logo-box">
+                        <h3 class="visually-hidden">Мобильный номер мастерской</h3>
+                        <a href="#" class="logo footer__logo">
+                            <img src="./icons/logo.svg" alt="logo" class="logo__image" width="35" height="35">
+                            Ink. House
+                        </a>
+                    </div>
+
+                    <div class="footer__contact">
+                        <ul class="contact">
+                            <li class="phone-number"><a href="tel:+79995435454" class="phone-number lower__title_nav">+7 (999) 543-54-54</a></li>
+                            <li><a href="#" class="lover-list-element-link">Мастерская</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+    <div class="box-2">
+            <div class="reprodaction__lower-box lower-box">
+                <h3 class="lower__title_nav">Репродукции</h3>
+                <ul class="reprodaction__lower-list">
+                    <li class="lover-list-element"><a href="#" class="lover-list-element-link">Франция</a> </li>
+                    <li class="lover-list-element"><a href="#" class="lover-list-element-link">Германия</a></li>
+                    <li class="lover-list-element"><a href="#" class="lover-list-element-link">Англия</a></li>
+                </ul>
+            </div>
+
+            <div class="news__lower-box lower-box">
+                <h3 class="lower__title_nav">Новинки</h3>
+                <ul class="reprodaction__lower-list">
+                    <li class="lover-list-element"><a href="#" class="lover-list-element-link">2021</a></li>
+                    <li class="lover-list-element"><a href="#" class="lover-list-element-link">2020</a></li>
+                </ul>
+            </div>
+
+            <div class="infirmation__lower-box lower-box">
+                <h3 class="lower__title_nav">О нас</h3>
+                <ul class="reprodaction__lower-list">
+                    <li class="lover-list-element"><a href="#" class="lover-list-element-link">Художники</a></li>
+                    <li class="lover-list-element"><a href="#" class="lover-list-element-link">Менеджеры</a></li>
+                </ul>
+            </div>
+    </div>
+
+            <div class="media__lower-box lower-box">
+                <div class="social__icons">
+
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./icons/facebook.svg" alt="facebook" class="social-link-img" width="24" height="24">
+                    </a>
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./icons/insta.svg" alt="instagram" class="social-link-img" width="24" height="24">
+                    </a>
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./icons/youtube.svg" alt="youtube" class="social-link-img" width="24" height="24">
+                    </a>
+                </div>
+                <div class="copyright">
+                    <small>Ink. House ®</small>
+                    <small>All rights reserved</small>
+                </div>
+            </div>
+            </section>
+
+
+        </footer>
+
+    </main>
+</body>
+</html>
